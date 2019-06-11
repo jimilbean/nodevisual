@@ -1,0 +1,34 @@
+<h1>2018년 일자별 기온</h1>
+
+<div class="chart-container">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script>
+    let ctx = document.querySelector("#myChart").getContext("2d");
+    let c = new Chart(ctx, {
+        type:'line',
+        data:{
+            labels:[{{#each labels}} '{{this}}', {{/each}}],
+            datasets:[
+                {
+                    label:'평균온도',
+                    borderColor:'rgb(255, 99, 132)',
+                    data:[{{averList}}]
+                },
+                {
+                    label:'최저온도',
+                    borderColor:'rgb(10, 99, 255)',
+                    data:[{{minList}}]
+                },
+                {
+                    label:'최고온도',
+                    borderColor:'rgb(50, 255, 132)',
+                    data:[{{maxList}}]
+                }
+            ]
+        },
+        options:{}
+    });
+
+</script>
